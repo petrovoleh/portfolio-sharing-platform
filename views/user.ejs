@@ -1,0 +1,42 @@
+<% layout('layout/main') -%>
+<% block('title', 'User') -%>
+
+<div class="row margintop">
+  <div class="col-2 ">
+    <img src="/images/<%= user.avatar %>" alt="Avatar" class="avatar">
+    <% if (session.isLoggedIn) { %>
+    <button class="chat" type="button" onclick="location.href='/chat/<%= user._id %>'">Message</button>
+    <% } %>
+  </div>
+  <div class="col ">
+    <h1><%=user.name%></h1>
+    <!-- User Information -->
+    <h3>About:</h3> 
+    <p id="about"><%=user.about%></p>
+    <h3>Contacts:</h3> 
+    <p id="contacts"><%=user.contacts%></p><hr> 
+    <!-- User Posts -->
+    <h3>Works:</h3>
+    <div id="posts">
+      <% for (let i = 0; i < posts.length; i++) { %>
+        <div class="post">
+          <div class="row">
+            <div class="col-sm-3">
+              <% if (posts[i].image) { %>
+                <img src="/images/<%= posts[i].image %>" class="post" alt="Post Image">
+              <% } %>
+            </div>
+            <div class="col-sm-9">
+              <p><%= posts[i].text %></p>
+            </div>
+          </div>
+          <% if (posts[i].link) { %>
+            <a href="<%= posts[i].link %>">Read More</a>
+          <% } %>
+        </div>
+        <hr> 
+      <% } %>
+    </div>
+  </div>
+  <div class="col-2 "></div>
+</div>

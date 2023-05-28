@@ -1,0 +1,90 @@
+<% layout('layout/main') -%>
+<% block('title', 'Chat') -%>
+
+<div class="row margintop">
+  <div class="col-2"></div>
+  <div class="col">
+    <h1>Chat with <%= user.name %></h1>
+    <div class="chat-container">
+      <% messages.forEach(function(message) { %>
+        <% if (message.user_id !== session.user._id) { %>
+          <div class="message companion-message">
+            <p><%= user.name %></p>
+        <% } else { %>
+          <div class="message user-message">
+        <% } %>
+        
+            <p><%= message.text %></p>
+            <div class="row">
+              <div class="col">
+                <p>
+                  <%= message.time.toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) %>,
+                  <%= message.time.toLocaleString(undefined, { hour: 'numeric', minute: 'numeric' }) %>
+                </p>
+              </div>
+              <div class="col d-flex justify-content-end">
+              <p>
+                <form id="deleteForm" action="/deletemessage" method="POST">
+                  <input type="hidden" name="_id" id="_id" value="<%= message._id %>">
+                  <button class="delete-button" onclick="submitForm()">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </form>
+              </p>
+              </div>
+            </div>
+          </div>
+      <% }) %>
+      <div id="chat-log"></div>
+
+        <form action="/sendmessage" method="POST">
+          <input type="hidden" name="chat_id" value="<%= chat._id %>">
+          <input type="text" name="text" id="text" class="messageinput" placeholder="Type your message here..."
+            onkeydown="handleUserInput(event)">
+          <button type="submit" style="display: none;"></button>
+        </form>
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+<script>
+  function handleUserInput(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      var userInput = document.getElementById("text");
+      var userMessage = userInput.value;
+
+      // Display user message in the chat log
+      displayMessage(userMessage, "user-message");
+      var form = userInput.closest('form');
+      form.submit();
+      // Clear the input field
+      userInput.value = "";
+    }
+  }
+
+  function displayMessage(message, className) {
+    var chatLog = document.getElementById("chat-log");
+    var messageContainer = document.createElement("div");
+    messageContainer.className = "message " + className;
+
+    var messageText = document.createElement("p");
+    messageText.textContent = message;
+    messageContainer.appendChild(messageText);
+
+    var dateTime = document.createElement("p");
+    var options = { hour: 'numeric', minute: 'numeric', hour12: true };
+    dateTime.textContent = new Date().toLocaleTimeString([], options);
+    messageContainer.appendChild(dateTime);
+
+    chatLog.appendChild(messageContainer);
+  }
+  // Scroll to the bottom of the page when it loads
+  window.onload = function() {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
+
+  // ...rest of the code
+
+</script>

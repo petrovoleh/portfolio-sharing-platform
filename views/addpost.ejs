@@ -1,0 +1,30 @@
+<% layout('layout/main') -%>
+<% block('title', 'Add post') -%>
+
+<div class="row margintop">
+  <div class="col-12 col-md-3"></div>
+  <div class="col-12 col-md-6">
+    <h1>New post</h1>
+    <form action="/addpost" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required>
+      </div>
+
+      <div class="form-group">
+        <label for="text">Text:</label>
+        <textarea id="text" name="text" rows="4" class="form-control" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="link">Link:</label>
+        <input type="text" id="link" name="link" class="form-control">
+      </div>
+      <div  id="loginstatus"><%=error%></div> <!-- Added div for login status -->
+      <input type="submit" value="Create Post" class="btn btn-primary">
+      
+
+    </form>
+  </div>
+  <div class="col-12 col-md-3"></div>
+</div>

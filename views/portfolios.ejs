@@ -1,0 +1,48 @@
+<% layout('layout/main') -%>
+<% block('title', 'Portfolios' ) -%>
+
+<div class="row margintop">
+  <div class="col-2 "></div>
+  <div class="col">
+    <h1>PORTFOLIOS</h1>
+    <% if (users.length> 0) { %>
+      <% for (let user of users) { %>
+        <div class="user" onclick="openUserProfile('<%= user._id %>')">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="/images/<%= user.avatar %>" alt="Avatar" class="avatar">
+            </div>
+            <div class="col-sm-9">
+              <h3>
+                <%= user.name %>
+              </h3>
+              
+              <p>
+                <%= user.about %>
+              </p>
+              <% if (session.isLoggedIn) { %>
+                <% if (session.user.type === "admin") { %>  
+                  <form id="deleteForm" action="/deleteuser" method="POST">
+                    <input type="hidden" name="id" id="id" value="<%= user._id %>">
+                    <button class="delete-account-button" onclick="submitForm()">
+                      <i class="fa fa-trash"> Delete account</i>
+                    </button>
+                  </form>
+                <% } %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+      <% } else { %>
+          <p>No users found.</p>
+      <% } %>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+<script>
+  function openUserProfile(id) {
+    window.location.href = '/user/' + id;
+  }
+</script>

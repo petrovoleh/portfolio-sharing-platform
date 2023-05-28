@@ -1,0 +1,45 @@
+<% layout('layout/main') -%>
+<% block('title', 'Chats') -%>
+
+<script>
+  function openUserProfile(id) {
+    
+    window.location.href = '/chat/' + id;
+  }
+</script>
+
+<div class="row margintop">
+    <div class="col-2 "></div>
+    <div class="col">
+        <h1>CHATS</h1>
+        <% if (chats.length > 0) { %>
+          <% for (let chat of chats) { %>
+            
+            <div class="user" onclick="openUserProfile('<%- chat.user1_id === session.user._id ? chat.user2_id : chat.user1_id %>')">
+              <div class="row">
+                <div class="col-3"> 
+                  <img src="/images/<%= chat.avatar %>" alt="Avatar" class="avatar">
+                </div>
+                <div class="col-9">
+                  <div class="row">
+                  <h3><%= chat.name %></h3>
+                  <div class="col d-flex justify-content-end">
+                      <form id="deleteForm" action="/deletechat" method="POST">
+                        <input type="hidden" name="_id" id="_id" value="<%= chat._id %>">
+                        <button class="delete-button" onclick="submitForm()">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </form>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          <% } %>
+        <% } else { %>
+          <p>No chats found.</p>
+        <% } %>
+    </div>
+    <div class="col-2"></div>
+</div>

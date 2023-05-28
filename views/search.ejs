@@ -1,0 +1,41 @@
+<% layout('layout/main') -%>
+<% block('title', 'Search') -%>
+
+<div class="row margintop">
+  <div class="col-2 "></div>
+  <div class="col-8 ">
+    <h1>SEARCH</h1>
+    <form action="/searchusers" class="search-form">
+      <input class="search" type="text" placeholder="Search.." name="searchrequest">
+      <button type="submit" class="search"><i class="fa fa-search"></i></button>
+    </form>
+    <% if (users.length> 0) { %>
+      <% for (let user of users) { %>
+        <div class="user" onclick="openUserProfile('<%= user._id %>')">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="/images/<%= user.avatar %>" alt="Avatar" class="avatar">
+            </div>
+            <div class="col-sm-9">
+              <h3>
+                <%= user.name %>
+              </h3>
+              <p>
+                <%= user.about %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+          <% } else { %>
+            <p>Write the nickname of the person you want to find.</p>
+            <% } %>
+  </div>
+  <div class="col-2 "></div>
+</div>
+
+<script>
+  function openUserProfile(id) {
+    window.location.href = '/user/' + id;
+  }
+</script>

@@ -1,0 +1,218 @@
+
+body {
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+
+}
+
+button.btnnav{
+  background-color: white;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 10px;
+  font-weight: bold;
+}
+.delete-button{
+  background-color: white;
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+}
+.delete-account-button{
+  background-color: white;
+  border-radius: 10px;
+  height: 30px;
+}
+button.chat{
+  background-color: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+h1{
+  font-weight: bold;
+}
+h3{
+  font-weight: bold;
+}
+ul {
+  list-style: disc;
+}
+.user {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+.user:hover {
+  background-color: #f2f2f2;
+}
+header{
+  background-color: gray;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.margintop{
+  margin-top: 100px;
+  text-align: justify;
+}
+.error{
+  margin-top: 40vh;
+  text-align: justify;
+}
+.loginstatus{
+  color: #ffffff;
+}
+.maintext{
+  margin-top: 100px;
+  text-align: justify;
+}
+.righttext{
+  margin-top: 100px;
+  text-align: justify;
+}
+img.logo{
+  z-index: 1;
+  width: 200px;
+  border-radius: 50%;
+}
+
+img.post {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+form.signin {
+  max-width: 350px;
+  max-height: 500px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #464646;
+}
+div.signin {
+  margin-top: 28vh;
+}
+.input {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #666666;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #666666;
+  border-radius: 12px;
+  margin-bottom: 20px ;
+
+}
+.search{
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px; 
+}
+.messageinput{
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 3px solid #666666;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+}
+button.search{
+  border: 1px solid #666666;
+  max-width: 50px;
+}
+
+button.signin {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #adadad;
+}
+
+.btn:hover {
+  background-color: #646464;
+  border-radius: 20px;
+}
+
+
+.chat-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.user-message {
+  background-color: #b9b9b9;
+  margin-left: 100px;
+}
+
+.companion-message {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  margin-right: 100px;
+}
+
+.message p {
+  margin: 5px;
+  padding: 5px;
+}
+
+.copyright-text{
+  margin-left: 30px;
+}
+.footer{
+  background-color: gray;
+  color: #f1f1f1;
+  position: relative;
+    
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}

@@ -1,0 +1,15 @@
+<% layout('layout/main') -%>
+<% block('title', 'Signup') -%>
+
+<div class="col-12 signin d-flex justify-content-center">
+  <h1>Sign up</h1>
+</div>
+<form class="signin" action="/register" method="post">
+  <input class="input" type="text" name="name" placeholder="Your name">
+  <input class="input" type="email" name="email" placeholder="Your e-mail">
+  <input class="input" type="tel" name="phone" placeholder="Your phone number">
+  <input class="input" type="password" name="password" placeholder="Password">
+  <input class="input" type="password" name="repeatPassword" placeholder="Repeated password">
+  <button class="signin" type="submit">Sign up</button>
+  <div class="loginstatus" id="loginstatus"><%=loginstatus%></div> <!-- Added div for login status -->
+</form>
